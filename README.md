@@ -1,60 +1,55 @@
 # First App
 
-A cross-platform dating application foundation built with **Flutter**, **Supabase** (Free Tier), and **Firebase Cloud Messaging (FCM)** for push notifications. This repository currently contains project structure and dependency configuration only; application screens and behavior will be added in later work.
+A responsive web dating application foundation using **React**, **Vite**, **Tailwind CSS**, and **Supabase**. The intended stack can be run on free tiers for development and early hosting: Supabase Free, plus Vercel Hobby or Firebase Hosting. Free plans have usage limits and hosting terms; review current provider plans before launch.
 
-## Technology
+This repository currently contains structure and configuration placeholders only. It does not include application logic or UI pages.
 
-- Flutter and Dart for Android, iOS, and other supported platforms.
-- Supabase for backend services.
-- Firebase Cloud Messaging for push notifications.
-- Riverpod for planned state management.
-
-`pubspec.yaml` is the primary dependency file. There is no Python backend or admin utility in this scaffold, so a `requirements.txt` is not needed.
-
-## Project layout
+## Project structure
 
 ```text
-lib/
+src/
   core/
-    constants/   App and service configuration key placeholders
-    services/    Supabase and notification service stubs
-    theme/       Theme, color, and typography placeholders
-    utils/       Helper and validator placeholders
+    config/       Supabase client and app constant placeholders
+    context/      Shared auth context placeholder
+    hooks/        Shared custom hooks
+    utils/        Shared helpers and formatters
   features/
-    auth/         Authentication feature (data, domain, presentation)
-    profile/      Profile feature (data, domain, presentation)
-    discovery/    Discovery feature (data, domain, presentation)
-    matches/      Matches feature (data, domain, presentation)
-    chat/         Chat feature (data, domain, presentation)
+    auth/         Authentication components, services, and hooks
+    profile/      Profile components, services, and hooks
+    discovery/    Discovery components, services, and hooks
+    matches/      Matches components, services, and hooks
+    chat/          Chat components, services, and hooks
   shared/
-    models/       Shared model location
-    widgets/      Reusable widget location
-assets/
-  icons/
+    components/   Reusable components such as Navbar, Modal, and Button
+    layouts/      Shared layouts such as MainLayout and AuthLayout
+  App.jsx         Application root placeholder
+  main.jsx        React entry point placeholder
+  index.css       Tailwind CSS directives
+public/
   images/
+  icons/
 ```
 
-Each feature owns its data, domain, and presentation code. Keep changes for a feature inside its folder where possible; shared code belongs under `lib/shared/`, and app-wide infrastructure belongs under `lib/core/`. This division lets two developers work on separate features with fewer overlapping edits. Empty folders are tracked with `.gitkeep` files.
+Each feature owns its components, data services, and hooks. App-wide configuration and shared helpers belong under `src/core/`; reusable components and layouts belong under `src/shared/`. Keep changes within the relevant feature where possible so two developers can work in parallel with fewer overlapping edits. `.gitkeep` files preserve empty directories.
 
-## Setup
+## Local setup
 
-1. Install the Flutter SDK and the platform tooling required for your target (Android Studio/Android SDK for Android, Xcode for iOS).
+1. Install a current Node.js LTS release and npm.
 2. Clone the repository and enter its directory.
-3. Copy `.env.example` to `.env` and fill in the Supabase project URL and anon key. Keep `.env` private; it is ignored by Git.
-4. Fetch Dart packages:
+3. Install dependencies:
 
    ```sh
-   flutter pub get
+   npm install
    ```
 
-5. Configure Firebase for each target platform and add the platform configuration files using the official FlutterFire setup instructions. FCM also requires platform-specific setup and permissions.
-6. Once an application entry point and screens have been added, launch on a connected device or emulator with:
+4. Copy `.env.example` to `.env` and provide your Supabase project URL and anon key. `.env` is ignored by Git.
+5. Start the Vite development server:
 
    ```sh
-   flutter run
+   npm run dev
    ```
 
-This initial scaffold intentionally has no `main()` entry point or UI yet, so `flutter run` will work after that foundation is added. Do not commit real credentials or Firebase private configuration files.
+The server provides the Vite starter shell. React mounting and application UI are intentionally not implemented yet. Use `npm run build` to create a production build after the app entry point is added.
 
 ## Git collaboration
 
@@ -65,13 +60,13 @@ This initial scaffold intentionally has no `main()` entry point or UI yet, so `f
    git pull --ff-only origin main
    ```
 
-2. Create a focused branch for your change, for example:
+2. Create a focused branch for your change:
 
    ```sh
    git switch -c feature/profile
    ```
 
-3. Make changes in the relevant feature or shared folder. Avoid editing another feature's files unless the work requires it.
+3. Work within the relevant feature folder and avoid editing another feature's files unless required.
 4. Review and commit your changes with a clear message:
 
    ```sh
@@ -86,4 +81,8 @@ This initial scaffold intentionally has no `main()` entry point or UI yet, so `f
    git push -u origin feature/profile
    ```
 
-6. Before starting another task, switch back to `main` and pull the latest changes. Resolve conflicts on your branch and coordinate edits when a shared file must change.
+6. Before the next task, return to `main` and pull the latest changes. Resolve conflicts on your feature branch and coordinate edits when a shared file must change.
+
+## Dependencies
+
+`package.json` is the source of truth for web dependencies and scripts. `requirements.txt` is retained only as a note; this project does not currently use Python utilities.

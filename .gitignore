@@ -1,34 +1,12 @@
-﻿# Environment files
+﻿node_modules/
+dist/
 .env
 .env.*
 !.env.example
-
-# Flutter/Dart generated files
-.dart_tool/
-.packages
-.pub-cache/
-.pub/
-build/
-coverage/
-.flutter-plugins
-.flutter-plugins-dependencies
-
-# Android / iOS build artifacts
-android/.gradle/
-android/local.properties
-ios/Flutter/Flutter.framework
-ios/Flutter/Flutter.podspec
-ios/Pods/
-ios/.symlinks/
-
-# Firebase credentials/configuration (add through secure team process)
-android/app/google-services.json
-ios/Runner/GoogleService-Info.plist
-
-# IDE/editor settings
-.idea/
-.vscode/
-*.iml
-*.swp
 .DS_Store
 Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*.log
